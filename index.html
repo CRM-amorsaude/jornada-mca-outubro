@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jornada MCA Outubro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0C223C;
+    --paper:#F1F5F7;
+    --surface:#FFFFFF;
+    --surface-2:#F8FBFC;
+    --line:#D8E3E8;
+    --line-soft:#E7EEF1;
+    --muted:#5C7185;
+    --apatita:#2F8FA0;
+    --apatita-wash:#EAF6F8;
+    --vermelho:#C62F2B;
+    --vermelho-wash:#FDF1F0;
+    --rosa:#C9346F;
+    --rosa-wash:#FCEFF4;
+    --shadow:0 1px 2px rgba(12,34,60,.05), 0 8px 24px -16px rgba(12,34,60,.28);
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --display:'Poppins', 'Inter', sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#E8F0F4;
+      --paper:#0A1622;
+      --surface:#0F2032;
+      --surface-2:#132639;
+      --line:#22415C;
+      --line-soft:#1A3348;
+      --muted:#96AEBF;
+      --apatita:#6FCEDD;
+      --apatita-wash:#12303C;
+      --vermelho:#FF7B75;
+      --vermelho-wash:#3A1A1B;
+      --rosa:#F585B2;
+      --rosa-wash:#3A1A2A;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#E8F0F4;
+    --paper:#0A1622;
+    --surface:#0F2032;
+    --surface-2:#132639;
+    --line:#22415C;
+    --line-soft:#1A3348;
+    --muted:#96AEBF;
+    --apatita:#6FCEDD;
+    --apatita-wash:#12303C;
+    --vermelho:#FF7B75;
+    --vermelho-wash:#3A1A1B;
+    --rosa:#F585B2;
+    --rosa-wash:#3A1A2A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--apatita); outline-offset:3px; border-radius:3px;}
+
+  /* ---------- topo ---------- */
+  .masthead{
+    background:#0C223C;
+    color:#FFFFFF;
+    padding:22px 40px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .masthead img{height:44px; width:auto;}
+  .masthead .rule{width:1px; height:30px; background:rgba(255,255,255,.22);}
+  .masthead .meta{
+    font-size:12.5px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.72);
+  }
+  .masthead .stamp{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:rgba(255,255,255,.55);
+  }
+
+  /* ---------- grade ---------- */
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+    display:grid;
+    grid-template-columns:212px minmax(0,1fr);
+    gap:56px;
+    align-items:start;
+  }
+  .index{
+    position:sticky;
+    top:32px;
+    padding:44px 24px 60px 0;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    border-right:1px solid var(--line-soft);
+    margin-right:-24px;
+  }
+  .index .label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:10px;
+  }
+  .index a{
+    display:block;
+    position:relative;
+    text-decoration:none;
+    font-size:13.5px;
+    color:var(--muted);
+    padding:5px 0 5px 30px;
+    border-radius:4px;
+    transition:color .15s ease;
+  }
+  .index a span{
+    position:absolute;
+    left:0;
+    top:6px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    opacity:.7;
+  }
+  .index a:hover{color:var(--apatita);}
+  .main{padding:44px 0 0; min-width:0;}
+
+  /* ---------- abertura ---------- */
+  .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--apatita);
+    margin-bottom:18px;
+  }
+  .kicker::before{content:""; width:22px; height:1px; background:var(--apatita);}
+  h1{
+    font-family:var(--display);
+    font-size:clamp(30px, 4.2vw, 46px);
+    font-weight:800;
+    line-height:1.1;
+    letter-spacing:-.02em;
+    margin:0 0 18px;
+    text-wrap:balance;
+    max-width:15ch;
+  }
+  .lede{
+    font-size:18px;
+    line-height:1.62;
+    color:var(--muted);
+    max-width:66ch;
+    margin:0;
+  }
+  .lede strong{color:var(--ink); font-weight:600;}
+
+  /* ---------- painel de numeros ---------- */
+  .panel{
+    margin:44px 0 8px;
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .panel .cell{
+    padding:22px 24px 22px 0;
+    border-right:1px solid var(--line-soft);
+  }
+  .panel .cell:last-child{border-right:0;}
+  .panel .num{
+    font-family:var(--display);
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-.02em;
+    line-height:1.1;
+    font-variant-numeric:tabular-nums;
+  }
+  .panel .cap{
+    font-size:12.5px;
+    line-height:1.45;
+    color:var(--muted);
+    margin-top:6px;
+    max-width:22ch;
+  }
+  .panel-src{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    margin-top:10px;
+  }
+
+  /* ---------- resumo de recomendacoes ---------- */
+  .recs{
+    margin-top:40px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:26px 28px 24px;
+    box-shadow:var(--shadow);
+  }
+  .recs h2{
+    font-family:var(--display);
+    font-size:17px;
+    font-weight:700;
+    margin:0 0 4px;
+    letter-spacing:-.01em;
+  }
+  .recs .sub{font-size:13.5px; color:var(--muted); margin:0 0 18px;}
+  .recs ol{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:11px;
+    counter-reset:rec;
+  }
+  .recs li{
+    position:relative;
+    padding-left:38px;
+    font-size:14.5px;
+    line-height:1.5;
+    counter-increment:rec;
+    color:var(--muted);
+  }
+  .recs li::before{
+    content:counter(rec, decimal-leading-zero);
+    position:absolute;
+    left:0;
+    top:2px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--rosa);
+  }
+  .recs li a{color:var(--ink); font-weight:600; text-decoration:none; border-bottom:1px solid var(--line);}
+  .recs li a:hover{border-bottom-color:var(--apatita); color:var(--apatita);}
+
+  /* ---------- secoes ---------- */
+  section.block{
+    padding:44px 0;
+    border-top:1px solid var(--line-soft);
+    scroll-margin-top:24px;
+  }
+  .head{
+    display:grid;
+    grid-template-columns:38px 1fr;
+    gap:14px;
+    align-items:baseline;
+    margin-bottom:18px;
+  }
+  .head .n{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--apatita);
+    letter-spacing:.04em;
+  }
+  .head h2{
+    font-family:var(--display);
+    font-size:23px;
+    font-weight:700;
+    letter-spacing:-.015em;
+    margin:0;
+    line-height:1.25;
+    text-wrap:balance;
+  }
+  .head .badge{margin-left:10px; vertical-align:2px;}
+  .block > p{
+    color:var(--muted);
+    font-size:15.5px;
+    max-width:68ch;
+    margin:0 0 14px 52px;
+  }
+  .block > p:last-child{margin-bottom:0;}
+  .block p strong{color:var(--ink); font-weight:600;}
+  .fineprint{font-size:13px !important; margin-top:12px !important;}
+
+  code{
+    font-family:var(--mono);
+    font-size:.86em;
+    background:var(--apatita-wash);
+    color:var(--apatita);
+    padding:1px 5px;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+
+  .badge{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:100px;
+    border:1px solid;
+    white-space:nowrap;
+  }
+  .badge.novo{color:var(--rosa); border-color:var(--rosa); background:var(--rosa-wash);}
+  .badge.rev{color:var(--apatita); border-color:var(--apatita); background:var(--apatita-wash);}
+  .badge.risco{color:var(--vermelho); border-color:var(--vermelho); background:var(--vermelho-wash);}
+
+  /* ---------- linha do tempo ---------- */
+  .timeline{
+    margin:22px 0 0 52px;
+    display:grid;
+  }
+  .timeline .step{
+    display:grid;
+    grid-template-columns:118px 1fr;
+    gap:20px;
+    padding:16px 0;
+    border-top:1px solid var(--line-soft);
+    align-items:start;
+  }
+  .timeline .step:first-child{border-top:0; padding-top:0;}
+  .timeline .when{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding-top:3px;
+  }
+  .timeline .what{font-size:15.5px; font-weight:600; line-height:1.4; margin:0 0 5px;}
+  .timeline .why{font-size:14px; color:var(--muted); margin:0; max-width:62ch;}
+  .timeline .step.now .when{color:var(--rosa);}
+
+  /* ---------- tabelas ---------- */
+  .tablewrap{
+    margin:20px 0 0 52px;
+    overflow-x:auto;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--surface);
+  }
+  table{width:100%; border-collapse:collapse; font-size:14px; min-width:520px;}
+  thead th{
+    text-align:left;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    padding:12px 16px;
+    background:var(--surface-2);
+    border-bottom:1px solid var(--line);
+    white-space:nowrap;
+  }
+  td{
+    padding:13px 16px;
+    border-bottom:1px solid var(--line-soft);
+    vertical-align:top;
+    line-height:1.5;
+    color:var(--muted);
+  }
+  tbody tr:last-child td{border-bottom:0;}
+  td:first-child{color:var(--ink); font-weight:600;}
+  td.num{font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .tier{font-family:var(--mono); font-size:11px; color:var(--apatita);}
+
+  /* ---------- cartoes ---------- */
+  .cards{
+    margin:22px 0 0 52px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:14px;
+  }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px 17px;
+  }
+  .card .t{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--apatita);
+    display:block;
+    margin-bottom:7px;
+  }
+  .card p{font-size:14px; margin:0; color:var(--muted); line-height:1.5;}
+  .card.alert{border-color:rgba(198,47,43,.35); background:var(--vermelho-wash);}
+  .card.alert .t{color:var(--vermelho);}
+  .card .owner{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    margin-top:10px;
+    padding-top:9px;
+    border-top:1px dashed var(--line);
+    display:block;
+  }
+
+  /* ---------- notas ---------- */
+  .note{
+    margin:22px 0 0 52px;
+    border-radius:10px;
+    padding:18px 20px;
+    border:1px solid var(--line);
+    background:var(--surface);
+    max-width:72ch;
+  }
+  .note .t{
+    font-size:13.5px;
+    font-weight:700;
+    margin:0 0 8px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    flex-wrap:wrap;
+  }
+  .note p{font-size:14px; margin:0; color:var(--muted); line-height:1.55;}
+  .note p + p{margin-top:9px;}
+  .note p strong{color:var(--ink); font-weight:600;}
+  .note.rosa{background:var(--rosa-wash); border-color:rgba(201,52,111,.28);}
+  .note.rosa .t{color:var(--rosa);}
+  .note.aten{background:var(--vermelho-wash); border-color:rgba(198,47,43,.28);}
+  .note.aten .t{color:var(--vermelho);}
+  .note.calma{background:var(--apatita-wash); border-color:rgba(47,143,160,.28);}
+  .note.calma .t{color:var(--apatita);}
+
+  /* ---------- funil ---------- */
+  .funnel{margin:22px 0 0 52px; display:grid; gap:10px;}
+  .stage{
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:16px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+    align-items:start;
+  }
+  .stage .k{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:15px;
+    color:#FFFFFF;
+    background:var(--apatita);
+    width:28px; height:28px;
+    border-radius:50%;
+    display:grid; place-items:center;
+    font-variant-numeric:tabular-nums;
+  }
+  .stage .title{font-size:15.5px; font-weight:600; margin:2px 0 6px;}
+  .stage .detail{font-size:13.5px; color:var(--muted); margin:0; line-height:1.55;}
+  .stage .detail em{font-style:normal; color:var(--ink); font-weight:600;}
+  .stage.gap{border-color:rgba(201,52,111,.35); background:var(--rosa-wash);}
+  .stage.gap .k{background:var(--rosa);}
+
+  /* ---------- rodape ---------- */
+  footer.foot{
+    padding:32px 0 70px;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:13px;
+    max-width:72ch;
+    line-height:1.6;
+  }
+  footer.foot .sig{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    color:var(--apatita);
+  }
+
+  /* ---------- responsivo ---------- */
+  @media (max-width: 1000px){
+    .shell{grid-template-columns:1fr; gap:0; padding:0 28px;}
+    .index{
+      position:static;
+      flex-direction:row;
+      flex-wrap:wrap;
+      gap:6px 14px;
+      border-right:0;
+      border-bottom:1px solid var(--line-soft);
+      margin-right:0;
+      padding:24px 0 18px;
+    }
+    .index .label{width:100%; margin-bottom:2px;}
+    .index a{padding:2px 0 2px 26px; font-size:12.5px;}
+    .index a span{top:3px;}
+    .main{padding-top:32px;}
+    .block > p, .timeline, .tablewrap, .cards, .note, .funnel{margin-left:0;}
+    .head{grid-template-columns:auto 1fr; gap:10px;}
+    .panel{grid-template-columns:repeat(2,1fr);}
+    .panel .cell{padding:18px 18px 18px 0;}
+    .panel .cell:nth-child(2){border-right:0;}
+    .panel .cell:nth-child(-n+2){border-bottom:1px solid var(--line-soft);}
+  }
+  @media (max-width: 560px){
+    .masthead{padding:18px 24px;}
+    .masthead .stamp{margin-left:0; width:100%;}
+    .shell{padding:0 24px;}
+    .panel{grid-template-columns:1fr;}
+    .panel .cell{border-right:0; border-bottom:1px solid var(--line-soft); padding:16px 0;}
+    .panel .cell:last-child{border-bottom:0;}
+    .timeline .step{grid-template-columns:1fr; gap:6px;}
+  }
+
+  /* ---------- impressao ---------- */
+  @media print{
+    body{background:#FFFFFF; font-size:11pt;}
+    .index{display:none;}
+    .shell{display:block; max-width:none; padding:0 12mm;}
+    .masthead{background:#0C223C !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    section.block{page-break-inside:avoid; padding:22px 0;}
+    .card, .note, .stage, .tablewrap, .recs{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <img src="https://5338832.fs1.hubspotusercontent-na1.net/hubfs/5338832/LOGO_AS_VERTICAL.png" alt="AmorSaúde">
+  <div class="rule"></div>
+  <div class="meta">CRM &amp; Marketing Operations · Jornada MCA</div>
+  <div class="stamp">v2 · 09 set 2026 · uso interno</div>
+</header>
+
+<div class="shell">
+
+  <nav class="index" aria-label="Índice do documento">
+    <div class="label">Índice</div>
+    <a href="#s01"><span>01</span>Contexto e objetivo</a>
+    <a href="#s02"><span>02</span>Como o desenho evoluiu</a>
+    <a href="#s03"><span>03</span>Segmentação</a>
+    <a href="#s04"><span>04</span>Dimensionamento</a>
+    <a href="#s05"><span>05</span>Jornada de comunicação</a>
+    <a href="#s06"><span>06</span>Depois da instalação</a>
+    <a href="#s07"><span>07</span>Calendário</a>
+    <a href="#s08"><span>08</span>Funil operacional</a>
+    <a href="#s09"><span>09</span>Métricas</a>
+    <a href="#s10"><span>10</span>Holdout e testes</a>
+    <a href="#s11"><span>11</span>Riscos em aberto</a>
+    <a href="#s12"><span>12</span>Decisões pendentes</a>
+  </nav>
+
+  <main class="main">
+
+    <div class="kicker">Proposta de campanha · Outubro 2026</div>
+    <h1>Do cashback parado à consulta na rede</h1>
+    <p class="lede">A campanha de setembro do Cartão de TODOS trabalhou a base MCA inteira com um objetivo: fazer o filiado baixar o app e gastar o saldo em qualquer parceiro. Em outubro o AmorSaúde assume quem sobrou, com um objetivo mais estreito e mais valioso para a rede — <strong>que esse saldo vire exame e consulta em clínica AmorSaúde</strong>.</p>
+
+    <div class="panel">
+      <div class="cell">
+        <div class="num">107.234</div>
+        <div class="cap">base MCA operável trabalhada em setembro</div>
+      </div>
+      <div class="cell">
+        <div class="num">R$ 6,86 mi</div>
+        <div class="cap">saldo de cashback parado nessa base</div>
+      </div>
+      <div class="cell">
+        <div class="num">~46%</div>
+        <div class="cap">da base sem nenhum toque de WhatsApp em setembro</div>
+      </div>
+      <div class="cell">
+        <div class="num">R$ 32,51</div>
+        <div class="cap">saldo médio na faixa mais numerosa, R$ 20 a R$ 49,99</div>
+      </div>
+    </div>
+    <div class="panel-src">Fonte: Ação MCA — Setembro, Cartão de TODOS. Volume de outubro ainda a apurar, ver seção 04.</div>
+
+    <div class="recs">
+      <h2>Sete ajustes propostos nesta versão</h2>
+      <p class="sub">O que muda em relação ao desenho anterior da jornada. Cada item está detalhado na seção indicada.</p>
+      <ol>
+        <li><a href="#s03">Outubro Rosa, não “mês da mulher”</a> — o tema de outubro é rastreamento de câncer de mama, e ele dá um destino concreto para o saldo: mamografia, ultrassom, consulta com ginecologista.</li>
+        <li><a href="#s03">Quebrar o “R$ 30 ou mais” em três faixas</a> — a promessa muda quando o saldo cobre parte do exame, quase todo ele, ou o exame inteiro.</li>
+        <li><a href="#s06">Não encerrar a jornada na instalação</a> — o gargalo da campanha de setembro está entre instalar e usar, não em instalar.</li>
+        <li><a href="#s05">Disparar WhatsApp por comportamento, não por dia fixo</a> — o D3 para toda a base é o item mais caro da régua e o menos qualificado, e a conta agora é inteira nossa.</li>
+        <li><a href="#s03">Não descartar a base masculina</a> — trilha paralela só por e-mail, custo marginal próximo de zero, e ela vira o grupo de comparação do recorte temático.</li>
+        <li><a href="#s09">Medir receita na rede AmorSaúde</a> — “saldo usado” é a métrica do CDT; a nossa é atendimento realizado em clínica.</li>
+        <li><a href="#s10">Separar o holdout antes do primeiro disparo</a> — sem isso não há como defender a verba de novembro.</li>
+      </ol>
+    </div>
+
+    <section class="block" id="s01">
+      <div class="head"><span class="n">01</span><h2>Contexto e objetivo</h2></div>
+      <p>Uma parte da base de filiados MCA tem cashback disponível e nunca baixou o app. Sem o app, esse valor não vira consulta, exame ou qualquer atendimento, e o filiado segue afastado da rede mesmo já tendo dinheiro reservado para isso.</p>
+      <p>O objetivo é simples de enunciar e mais difícil de medir: levar o filiado a <strong>baixar o app, agendar um atendimento e efetivamente usar o cashback</strong> nesse atendimento. Cada uma dessas três coisas precisa acontecer, e cada uma pode ser medida separadamente.</p>
+
+      <div class="note rosa">
+        <p class="t"><span class="badge novo">novo</span> Por que o AmorSaúde investe em algo que o CDT já faz</p>
+        <p>Os dois objetivos parecem o mesmo e não são. Para o Cartão de TODOS, a campanha vence quando o saldo é gasto — em farmácia, restaurante, ótica, tanto faz. Para o AmorSaúde, ela só vence quando o saldo vira atendimento na rede.</p>
+        <p>Essa diferença justifica a frente própria e define tudo que vem depois: o ângulo da mensagem fala de exame e consulta, o destino do clique é a agenda e não a carteira, e a métrica de ponta é atendimento realizado. É também o que define quem paga a conta: o WhatsApp desta frente é bancado integralmente pelo AmorSaúde, então o retorno precisa aparecer em atendimento na rede, não em saldo gasto em qualquer parceiro.</p>
+      </div>
+    </section>
+
+    <section class="block" id="s02">
+      <div class="head"><span class="n">02</span><h2>Como o desenho evoluiu</h2></div>
+      <p>O plano original rodava em paralelo a uma campanha própria do CDT no mesmo público. Identificamos o risco de comunicar a mesma pessoa duas vezes, por canais diferentes, sem necessidade. A sequência abaixo resume as decisões tomadas até aqui.</p>
+      <div class="timeline">
+        <div class="step">
+          <div class="when">Desenho inicial</div>
+          <div>
+            <p class="what">Jornada MCA para toda a base sem app, cashback a partir de R$ 30</p>
+            <p class="why">E-mail e WhatsApp saindo do número da clínica, ângulo de consulta pendente, saída ao instalar e agendar.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="when">Revisão</div>
+          <div>
+            <p class="what">Comparação com a “Ação MCA — Setembro” do Cartão de TODOS</p>
+            <p class="why">O CDT já roda cinco réguas no mesmo público com o mesmo objetivo de instalação, incluindo uma frente específica de consulta (Régua D) para a faixa de R$ 30 a R$ 40, com 20.866 pessoas.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="when">Coordenação</div>
+          <div>
+            <p class="what">Gate de deduplicação por <code>cpf_norm</code> antes de qualquer envio</p>
+            <p class="why">Evita duplicar contato com quem está em régua ativa do CDT na mesma semana. Precisa ser recorrente, não um recorte único — ver seção 11.</p>
+          </div>
+        </div>
+        <div class="step now">
+          <div class="when">Pivot · atual</div>
+          <div>
+            <p class="what">Mover o esforço para outubro, focado em quem não converteu em setembro</p>
+            <p class="why">Em vez de competir pela mesma pessoa no mesmo mês, o AmorSaúde assume o remanescente com ângulo novo — Outubro Rosa, cashback aplicado a exame — e verba própria de WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="s03">
+      <div class="head"><span class="n">03</span><h2>Segmentação de outubro<span class="badge rev">revisado</span></h2></div>
+      <p>A entrada na jornada passa por quatro filtros aplicados em sequência sobre a base MCA, e depois por uma quebra em faixas de saldo que define a mensagem.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Filtro</th><th>Critério</th><th>Motivo</th></tr></thead>
+          <tbody>
+            <tr><td>Saldo</td><td>Cashback a partir de R$ 30</td><td>Piso em que o valor cobre ao menos parte de um exame de rastreio</td></tr>
+            <tr><td>Status do app</td><td>Sem <code>App Launched</code> até 30/09, fim da régua do CDT</td><td>Confirma que a régua anterior não converteu essa pessoa</td></tr>
+            <tr><td>Adimplência</td><td>Filiado ativo e adimplente na data do recorte</td><td>Herdado do critério do CDT; precisa persistir depois do join, senão a base ampla reabre</td></tr>
+            <tr><td>Perfil</td><td>Sexo feminino — trilha A</td><td>Alinhamento com a campanha institucional de outubro</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note rosa">
+        <p class="t"><span class="badge novo">novo</span> Outubro é Outubro Rosa, e isso é melhor do que “mês da mulher”</p>
+        <p>O material anterior tratava outubro como mês da mulher — esse é março. Outubro Rosa é campanha de rastreamento de câncer de mama, e a diferença trabalha a nosso favor: em vez de um tema genérico, temos um <strong>destino concreto para o saldo</strong>, que já é o que o AmorSaúde vende.</p>
+        <p>Mamografia, ultrassonografia mamária e consulta com ginecologista ou mastologista passam a ser o produto da mensagem. A comunicação deixa de dizer “você tem dinheiro parado” e passa a dizer “esse valor cobre o exame que você adiou este ano”. Isso também exige alinhamento com o marketing institucional: se o AmorSaúde já tem peça de Outubro Rosa no ar, a jornada precisa usar a mesma arte e o mesmo mote.</p>
+      </div>
+
+      <p style="margin-top:26px;">Dentro da trilha A, a promessa muda conforme o saldo. Uma pessoa com R$ 32 e uma com R$ 140 não devem receber a mesma frase.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Faixa</th><th>Referência de volume</th><th>Promessa da mensagem</th><th>Canal de entrada</th></tr></thead>
+          <tbody>
+            <tr><td>R$ 30 a 49,99</td><td class="num">maior volume da base <span class="tier">T3</span></td><td>“Seu saldo cobre boa parte do exame de rastreio”, com o valor restante declarado</td><td>E-mail; WhatsApp só após clique</td></tr>
+            <tr><td>R$ 50 a 99,99</td><td class="num">29.707 na base de set. <span class="tier">T2</span></td><td>“Dá para marcar a consulta e ainda sobra para o exame”</td><td>E-mail, WhatsApp no reforço</td></tr>
+            <tr><td>R$ 100 ou mais</td><td class="num">15.915 na base de set. <span class="tier">T1</span></td><td>“Seu exame já está pago” — a promessa mais forte que temos</td><td>WhatsApp na abertura</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">Volumes de referência são da base total de setembro. O volume de outubro é o subconjunto feminino não convertido de cada faixa, ainda a apurar.</p>
+
+      <div class="note calma">
+        <p class="t"><span class="badge novo">novo</span> A base masculina não deve ser descartada, só rebaixada de canal</p>
+        <p>Recortar por sexo feminino faz sentido para o ângulo temático, mas jogar fora o restante da base elegível desperdiça um público que também tem saldo parado e já foi pago. Proposta: trilha B, <strong>só e-mail</strong>, sem WhatsApp, com o ângulo genérico de “use seu saldo em consulta e exame”. Custo marginal próximo de zero.</p>
+        <p>Além do volume extra, ela responde uma pergunta que a campanha precisa responder: o resultado veio do tema de outubro ou apenas do fato de termos falado com quem sobrou? Sem a trilha B, não dá para separar as duas coisas.</p>
+      </div>
+    </section>
+
+    <section class="block" id="s04">
+      <div class="head"><span class="n">04</span><h2>Dimensionamento<span class="badge novo">novo</span></h2></div>
+      <p>O desenho anterior não trazia volume, e sem volume não há como estimar o custo de WhatsApp nem definir o tamanho do holdout. Estes são os números que precisam sair do data lake antes do fechamento do plano.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Número a apurar</th><th>Recorte</th><th>Para que serve</th></tr></thead>
+          <tbody>
+            <tr><td>Base elegível total</td><td>MCA ativo e adimplente, saldo ≥ R$ 30, sem <code>App Launched</code> até 30/09</td><td>Denominador de tudo</td></tr>
+            <tr><td>Quebra por sexo</td><td>Mesma base, dividida em trilha A e trilha B</td><td>Define o volume do recorte temático</td></tr>
+            <tr><td>Quebra por faixa de saldo</td><td>R$ 30–49,99 · R$ 50–99,99 · R$ 100+</td><td>Define a mensagem e a alocação de WhatsApp</td></tr>
+            <tr><td>Cobertura de contato</td><td>Telefone válido e sem opt-out; e-mail válido</td><td>Volume real de disparo, sempre menor que a base</td></tr>
+            <tr><td>Interseção com réguas do CDT</td><td>Join por <code>cpf_norm</code> contra a base em régua ativa na semana</td><td>Volume que sai por deduplicação</td></tr>
+            <tr><td>Saldo total e médio por faixa</td><td>Soma e média do saldo elegível</td><td>Dimensiona o valor em jogo e sustenta o caso de investimento</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <p class="t">Entrega esperada</p>
+        <p>Cada número acima sai de uma consulta no Athena e vem acompanhado do <code>.sql</code> correspondente, citado por nome, junto do CSV. Sem o dimensionamento fechado, a seção 07 fica com datas mas sem volume por onda.</p>
+      </div>
+    </section>
+
+    <section class="block" id="s05">
+      <div class="head"><span class="n">05</span><h2>Jornada de comunicação<span class="badge rev">revisado</span></h2></div>
+      <p>A versão anterior previa quatro toques em dias fixos, alternando e-mail e WhatsApp para todo mundo. O problema é o custo: o WhatsApp saía para a base inteira no dia 3, inclusive para quem nunca abriu o e-mail do dia 0. A régua abaixo mantém os quatro toques, mas condiciona os pagos ao comportamento.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Toque</th><th>Canal</th><th>Quem recebe</th><th>Conteúdo</th></tr></thead>
+          <tbody>
+            <tr><td>D0</td><td>E-mail</td><td>Toda a trilha A; trilha B em paralelo</td><td>Outubro Rosa: o exame que ficou para depois, e o saldo que já cobre parte dele</td></tr>
+            <tr><td>D0</td><td>WhatsApp</td><td>Apenas faixa R$ 100+</td><td>“Seu exame já está pago.” Único caso em que o canal pago abre a régua</td></tr>
+            <tr><td>D3</td><td>WhatsApp</td><td>Quem abriu ou clicou o D0 e não instalou</td><td>Retoma o exame, declara o valor disponível, botão direto para a loja</td></tr>
+            <tr><td>D6</td><td>E-mail</td><td>Todos sem <code>App Launched</code></td><td>Passo a passo: baixar, ver saldo, escolher clínica, agendar</td></tr>
+            <tr><td>D9</td><td>WhatsApp</td><td>Clicadores sem instalação, saldo ≥ R$ 50</td><td>Última chamada antes de sair da régua ativa</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note calma">
+        <p class="t"><span class="badge novo">novo</span> O destino do clique é a agenda, não a home</p>
+        <p>O CDT registrou “link sem destino” como risco da campanha de setembro. Para a nossa frente o destino é mais específico: o clique precisa abrir a loja e, depois da instalação, levar o filiado direto à <strong>tela de agendamento com a clínica mais próxima já sugerida</strong> — não à home nem à carteira de saldo.</p>
+        <p>Isso exige deep link diferido configurado antes do primeiro disparo. Se não der tempo, a régua ainda roda, mas a queda entre instalação e agendamento será maior e a leitura da seção 09 fica comprometida.</p>
+      </div>
+
+      <div class="note calma">
+        <p class="t">Número de origem do WhatsApp</p>
+        <p>O disparo sai pelo número do CRM, não pelo da clínica, para que a resposta do filiado não caia direto no bot de agendamento e pule a etapa de download. O número já está isolado do roteamento automático no cVortex, e o atendimento das respostas fica com o time de CRM durante a janela de disparo.</p>
+      </div>
+    </section>
+
+    <section class="block" id="s06">
+      <div class="head"><span class="n">06</span><h2>Depois da instalação<span class="badge novo">novo</span></h2></div>
+      <p>Este é o ajuste mais importante da versão. O desenho anterior tirava a pessoa da jornada assim que ela instalava o app e agendava — mas instalar é o passo fácil, e a própria campanha de setembro tratou “instalou e não usou” como uma régua inteira à parte. Encerrar na instalação significa entregar o filiado exatamente no ponto em que ele costuma parar.</p>
+
+      <div class="cards">
+        <div class="card">
+          <span class="t">+4h · In-app</span>
+          <p>Na primeira abertura depois da instalação, card com o saldo e a lista de clínicas próximas com agenda para exame de mama.</p>
+        </div>
+        <div class="card">
+          <span class="t">+24h · Push</span>
+          <p>Se não agendou: lembrete com o valor e a especialidade, em horário de decisão, não de madrugada.</p>
+        </div>
+        <div class="card">
+          <span class="t">+72h · E-mail</span>
+          <p>Se não agendou: o que o exame envolve e quanto tempo leva, para quem trava por não saber o que esperar.</p>
+        </div>
+        <div class="card">
+          <span class="t">Pré-atendimento</span>
+          <p>Agendou mas ainda não compareceu: lembrete 24h antes e no dia. Sem comparecimento não há uso de saldo.</p>
+        </div>
+      </div>
+      <p style="margin-top:16px;">Essa régua roda em CleverTap, com canais que já temos e sem custo por mensagem. A saída definitiva da campanha passa a ser o atendimento realizado com débito de saldo, não a instalação.</p>
+    </section>
+
+    <section class="block" id="s07">
+      <div class="head"><span class="n">07</span><h2>Calendário<span class="badge novo">novo</span></h2></div>
+      <p>A régua do CDT encerra em 30/09 com o último e-mail. O recorte de outubro depende desse fechamento, então a apuração da base só pode rodar em 01/10.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Data</th><th>Marco</th><th>Responsável</th></tr></thead>
+          <tbody>
+            <tr><td class="num">Até 26/09</td><td>Decisões pendentes fechadas: verba de WhatsApp e acesso ao dado de saldo</td><td>CRM + CDT</td></tr>
+            <tr><td class="num">30/09</td><td>Fim da régua de setembro do CDT, último toque</td><td>CDT</td></tr>
+            <tr><td class="num">01/10</td><td>Apuração da base elegível e separação do holdout</td><td>CRM · dados</td></tr>
+            <tr><td class="num">02/10</td><td>Deduplicação contra réguas ativas do CDT e higienização de telefone</td><td>CRM · dados</td></tr>
+            <tr><td class="num">06/10</td><td>D0 — e-mail das trilhas A e B, WhatsApp da faixa R$ 100+</td><td>CRM</td></tr>
+            <tr><td class="num">09/10</td><td>D3 — WhatsApp para engajados sem instalação</td><td>CRM</td></tr>
+            <tr><td class="num">13/10</td><td>D6 — e-mail com o passo a passo</td><td>CRM</td></tr>
+            <tr><td class="num">14/10</td><td>Leitura parcial: instalação e agendamento por faixa e por trilha</td><td>CRM</td></tr>
+            <tr><td class="num">15/10</td><td>D9 — última chamada</td><td>CRM</td></tr>
+            <tr><td class="num">31/10</td><td>Fechamento com janela de 5 dias para uso de saldo; leitura contra holdout</td><td>CRM</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">O D6 original cairia em 12/10, feriado. Foi deslocado para 13/10.</p>
+    </section>
+
+    <section class="block" id="s08">
+      <div class="head"><span class="n">08</span><h2>Funil operacional<span class="badge rev">revisado</span></h2></div>
+      <p>A conversão completa exige quatro eventos em sequência, cada um com fonte de dado própria. O terceiro foi acrescentado nesta versão porque agendamento sem comparecimento não gera nem receita nem uso de saldo.</p>
+
+      <div class="funnel">
+        <div class="stage">
+          <div class="k">1</div>
+          <div>
+            <p class="title">Download do app</p>
+            <p class="detail">Evento <em>App Launched</em> · fonte CleverTap · saída: entra na régua de agendamento.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="k">2</div>
+          <div>
+            <p class="title">Agendamento pelo app</p>
+            <p class="detail">Agendamento com canal app · fonte <code>tb_agendamentos_amei</code> · saída: entra na régua de comparecimento.</p>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="k">3</div>
+          <div>
+            <p class="title">Atendimento realizado</p>
+            <p class="detail">Status de comparecimento no agendamento · fonte <code>tb_agendamentos_amei</code> · é aqui que o AmorSaúde gera receita, e o dado é nosso.</p>
+          </div>
+        </div>
+        <div class="stage gap">
+          <div class="k">4</div>
+          <div>
+            <p class="title">Uso do cashback</p>
+            <p class="detail">Débito de saldo vinculado ao atendimento · fonte base Cartão de TODOS · <em>acesso ainda não confirmado</em>, ver seção 11. A etapa 3 funciona como proxy enquanto isso não se resolve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="s09">
+      <div class="head"><span class="n">09</span><h2>Métricas de sucesso<span class="badge rev">revisado</span></h2></div>
+      <p>Além das taxas de passagem do funil, seis indicadores dizem se a iniciativa valeu o investimento e o esforço de coordenação com o CDT.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Indicador</th><th>Como medir</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td>Receita gerada na rede</td><td>Faturamento dos atendimentos realizados por filiados da campanha, no mês</td><td>É a métrica que justifica o AmorSaúde bancar o disparo sozinho</td></tr>
+            <tr><td>Custo por atendimento realizado</td><td>Custo total de WhatsApp da campanha dividido pelos atendimentos realizados</td><td>Comparável ao custo de aquisição das outras frentes</td></tr>
+            <tr><td>Conversão completa</td><td>Instalação, agendamento e atendimento sobre a base impactada</td><td>Leitura de ponta a ponta, com a queda visível em cada passo</td></tr>
+            <tr><td>Incrementalidade</td><td>Diferença entre grupo impactado e holdout, por faixa de saldo</td><td>Separa efeito da campanha de conversão espontânea</td></tr>
+            <tr><td>Trilha A contra trilha B</td><td>Conversão do recorte temático contra a trilha genérica só e-mail</td><td>Diz se o ângulo de Outubro Rosa carrega ou se foi só o público</td></tr>
+            <tr><td>Respostas atendidas no número do CRM</td><td>Respostas tratadas sobre respostas recebidas, e tempo até a primeira resposta</td><td>Mede o custo operacional escondido da troca de número</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block" id="s10">
+      <div class="head"><span class="n">10</span><h2>Holdout e testes<span class="badge novo">novo</span></h2></div>
+      <p>A versão anterior citava incrementalidade nas métricas sem definir de onde sairia o grupo de controle. Isso precisa estar resolvido antes do primeiro disparo — depois de enviar, não há como reconstruir.</p>
+
+      <div class="cards">
+        <div class="card">
+          <span class="t">Holdout</span>
+          <p>5% a 10% da base elegível, sorteados dentro de cada faixa de saldo para manter a proporção, sem nenhum contato da campanha.</p>
+          <span class="owner">separar em 01/10</span>
+        </div>
+        <div class="card">
+          <span class="t">Teste de ângulo</span>
+          <p>Trilha A com tema de outubro contra trilha B genérica. Responde se o tema justifica o recorte de público.</p>
+          <span class="owner">leitura em 14/10</span>
+        </div>
+        <div class="card">
+          <span class="t">Teste de assunto</span>
+          <p>Dois assuntos no e-mail D0 da trilha A: valor declarado no assunto contra exame nomeado no assunto.</p>
+          <span class="owner">decidir antes do D6</span>
+        </div>
+        <div class="card">
+          <span class="t">Janela de atribuição</span>
+          <p>Cinco dias entre o toque e o evento, mesma janela usada pelo CDT em setembro, para as leituras serem comparáveis.</p>
+          <span class="owner">fixar antes do D0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="s11">
+      <div class="head"><span class="n">11</span><h2>Riscos e pontos em aberto</h2></div>
+      <div class="cards">
+        <div class="card alert">
+          <span class="t">Dado de uso do saldo</span>
+          <p>O evento de débito é da base do Cartão de TODOS, não do AmorSaúde. Falta confirmar acesso e a propriedade exata. Enquanto isso, atendimento realizado é o proxy.</p>
+        </div>
+        <div class="card alert">
+          <span class="t">Deduplicação recorrente</span>
+          <p>O gate por <code>cpf_norm</code> precisa rodar a cada onda, não uma vez. Se o CDT abrir régua nova em outubro, um recorte de 01/10 já estará desatualizado no D3.</p>
+        </div>
+        <div class="card alert">
+          <span class="t">Opt-out e higienização</span>
+          <p>Remover opt-out, telefone inválido e histórico de falha antes de cada onda. Não estava previsto no desenho e é requisito de LGPD, além de economia direta.</p>
+        </div>
+        <div class="card alert">
+          <span class="t">Validade do saldo</span>
+          <p>Se o cashback tiver data de expiração, ela é a alavanca de urgência mais forte disponível e muda a copy inteira. Falta confirmar se existe e qual é.</p>
+        </div>
+        <div class="card alert">
+          <span class="t">Capacidade de agenda</span>
+          <p>Concentrar demanda de exame de mama em outubro pressiona a agenda das clínicas. Vale checar disponibilidade antes de dimensionar as ondas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="s12">
+      <div class="head"><span class="n">12</span><h2>Decisões pendentes<span class="badge novo">novo</span></h2></div>
+      <p>Cinco itens travam o cronograma da seção 07. Todos precisam de resposta nas datas abaixo para o D0 sair em 06/10.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Decisão</th><th>Quem decide</th><th>Prazo</th></tr></thead>
+          <tbody>
+            <tr><td>Acesso ao evento de débito de saldo</td><td>CDT · dados</td><td class="num">26/09</td></tr>
+            <tr><td>Manter ou não a trilha B masculina</td><td>CRM</td><td class="num">26/09</td></tr>
+            <tr><td>Tamanho do holdout: 5% ou 10%</td><td>CRM</td><td class="num">30/09</td></tr>
+            <tr><td>Deep link diferido para a tela de agendamento</td><td>Produto · app</td><td class="num">30/09</td></tr>
+            <tr><td>Arte e mote alinhados à campanha institucional de Outubro Rosa</td><td>Marketing</td><td class="num">30/09</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="sig">CRM &amp; Marketing Operations · AmorSaúde</div>
+      Material preparado para apresentação interna. Fontes: desenho da jornada MCA e material de referência “Ação MCA — Setembro” do Cartão de TODOS. Os números de base, saldo e cobertura citados nas seções 03 e 04 vêm da apuração de setembro do CDT; o recorte de outubro ainda será apurado no data lake.
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
